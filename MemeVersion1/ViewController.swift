@@ -24,9 +24,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if imagePickerView.image == nil{
-            shareButton.isEnabled = false
-        }
         // Text attributes
         
         let memeTextAttributes: [String: Any] = [
@@ -70,10 +67,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // function telling the delegate the user picked a still image or movie
     
     @IBAction func sharePicture(_ sender: Any) {
-        let image = UIImage()
-        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        //let image = UIImage()
+        let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
-
+      // controller.completionWithItemsHandler = (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) -> Void
     }
     
     @IBAction func cancel() {
@@ -86,7 +83,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = chosenImage
             imagePickerView.contentMode = .scaleAspectFit
-            shareButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         }
     }
@@ -105,6 +101,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled =  UIImagePickerController.isSourceTypeAvailable(.camera)
+        if imagePickerView.image == nil {
+            shareButton.isEnabled = false
+        } else {
+           shareButton.isEnabled = true
+        }
         subscribeToKeyboardNotifications()
     }
     
@@ -142,7 +143,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             textField.text = ""
         }
         
-        if textField == topTextField{
+        if textField == topTextField {
             view.frame.origin.y = 250
         }
         
@@ -164,7 +165,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let memedImage = generateMemedImage()
         let meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
-        
     }
     
     func generateMemedImage() -> UIImage {
