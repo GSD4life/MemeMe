@@ -67,10 +67,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // function telling the delegate the user picked a still image or movie
     
     @IBAction func sharePicture(_ sender: Any) {
-        //let image = UIImage()
-        let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
+        let memedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
-      // controller.completionWithItemsHandler = (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) -> Void
+        controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) -> Void in
+         if completed == true {
+          self.save()
+         } else {
+            self.dismiss(animated: true, completion: nil)
+            }
+         }
     }
     
     @IBAction func cancel() {
@@ -169,8 +175,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func generateMemedImage() -> UIImage {
         
-        navigationBar.isHidden = true
-        toolBar.isHidden = true
+        self.navigationBar.isHidden = true
+        self.toolBar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -178,8 +184,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        navigationBar.isHidden = false
-        toolBar.isHidden = false
+        self.navigationBar.isHidden = false
+        self.toolBar.isHidden = false
         
         return memedImage
     }
