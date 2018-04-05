@@ -192,3 +192,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
 }
 
+// Sources:
+// Udacity IOS program (UIKit fundamentals), Udacity forums, and mentor.
+
