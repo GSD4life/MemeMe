@@ -132,7 +132,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
+        if bottomTextField.isFirstResponder {
         view.frame.origin.y -= getKeyboardHeight(notification)
+       }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -149,11 +151,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if topTextField.text == "Top" || bottomTextField.text == "Bottom"{
             textField.text = ""
         }
-        
-        if textField == topTextField {
-            view.frame.origin.y = 250
-        }
-        
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
