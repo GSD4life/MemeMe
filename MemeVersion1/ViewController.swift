@@ -32,38 +32,20 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
         
+        // Configure text field attributes to top and bottom textfields
         func configure(_ textField: UITextField, with defaultText: String) {
-            // TODO:- code to configure the textField
             if defaultText == "Top" || defaultText == "Bottom"  {
-                textField.text == defaultText
+                topTextField.text = "Top"
+                bottomTextField.text = "Bottom"
                 textField.delegate = self
                 textField.defaultTextAttributes = memeTextAttributes
                 textField.textAlignment = .center
-                
-                configure(topTextField, with: "Top")
-                configure(bottomTextField, with: "Bottom")
             }
-        
-            
         }
         
-        // Top textfield attributes
-        
-//        topTextField.text = "Top"
-//        topTextField.delegate = self
-//        topTextField.defaultTextAttributes = memeTextAttributes
-//        topTextField.textAlignment = .center
-//
-    
-        // Bottom textfield attributes
-        
-//        bottomTextField.text = "Bottom"
-//        bottomTextField.delegate = self
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
-//        bottomTextField.textAlignment = .center
-
+        configure(topTextField, with: "Top")
+        configure(bottomTextField, with: "Bottom")
     }
-
     
     func pickAnImage(from source: UIImagePickerControllerSourceType) {
         if source == .photoLibrary || source == .camera {
@@ -71,7 +53,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             imagePicker.delegate = self
             present(imagePicker, animated: true, completion: nil)
         }
-        
     }
     
     @IBAction func pickAnImageFromCamera(_ sender:Any) {
@@ -167,7 +148,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if topTextField.text == "Top" || bottomTextField.text == "Bottom"{
             textField.text = ""
         }
-
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -211,9 +191,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         hideNaviAndToolbar(hidebars: false)
         
         return memedImage
+       }
     }
-    
-}
 
 // Sources:
 // Udacity IOS program (UIKit fundamentals), Udacity forums, and mentor.
