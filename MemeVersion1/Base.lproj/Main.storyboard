@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MemeEditorViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeVersion1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="MemeEditorViewController" customClass="ViewController" customModule="MemeVersion1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,33 +25,17 @@
                                 <rect key="frame" x="2" y="20" width="318" height="44"/>
                                 <items>
                                     <navigationItem id="6an-0U-OsF">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="bUx-yX-neQ">
-                                            <connections>
-                                                <action selector="sharePicture:" destination="BYZ-38-t0r" id="bIT-Ee-Yeo"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="xKT-am-uQR">
-                                            <connections>
-                                                <action selector="cancel" destination="BYZ-38-t0r" id="T0o-zw-H6k"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="bUx-yX-neQ"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="xKT-am-uQR"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="yRD-Gc-qEg">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Album" id="3Ob-9u-65z">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="5IV-Cd-Q5Y"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="3Ob-9u-65z"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Wff-eB-haV"/>
-                                    <barButtonItem systemItem="camera" id="wic-AG-iry">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="FgR-CR-fRj"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="wic-AG-iry"/>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ju-4D-pUz">
@@ -92,16 +76,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4h7-xG-WcX"/>
                     </view>
-                    <connections>
-                        <outlet property="bottomTextField" destination="ccN-yp-cSi" id="iyQ-pN-njC"/>
-                        <outlet property="cameraButton" destination="wic-AG-iry" id="BMa-mb-GMa"/>
-                        <outlet property="cancelButton" destination="xKT-am-uQR" id="zFx-vW-WvG"/>
-                        <outlet property="imagePickerView" destination="XBa-hh-fm2" id="gTj-OI-3q0"/>
-                        <outlet property="navigationBar" destination="2mM-kC-j0c" id="lpj-z1-sTS"/>
-                        <outlet property="shareButton" destination="bUx-yX-neQ" id="Wgw-W9-puz"/>
-                        <outlet property="toolBar" destination="yRD-Gc-qEg" id="Ipg-qg-zBb"/>
-                        <outlet property="topTextField" destination="3Ju-4D-pUz" id="3Ct-xZ-gRz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
