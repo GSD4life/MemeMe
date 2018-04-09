@@ -32,22 +32,38 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
         
+        func configure(_ textField: UITextField, with defaultText: String) {
+            // TODO:- code to configure the textField
+            if defaultText == "Top" || defaultText == "Bottom"  {
+                textField.text == defaultText
+                textField.delegate = self
+                textField.defaultTextAttributes = memeTextAttributes
+                textField.textAlignment = .center
+                
+                configure(topTextField, with: "Top")
+                configure(bottomTextField, with: "Bottom")
+            }
+        
+            
+        }
+        
         // Top textfield attributes
         
-        topTextField.text = "Top"
-        topTextField.delegate = self
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        
+//        topTextField.text = "Top"
+//        topTextField.delegate = self
+//        topTextField.defaultTextAttributes = memeTextAttributes
+//        topTextField.textAlignment = .center
+//
     
         // Bottom textfield attributes
         
-        bottomTextField.text = "Bottom"
-        bottomTextField.delegate = self
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.textAlignment = .center
+//        bottomTextField.text = "Bottom"
+//        bottomTextField.delegate = self
+//        bottomTextField.defaultTextAttributes = memeTextAttributes
+//        bottomTextField.textAlignment = .center
 
     }
+
     
     func pickAnImage(from source: UIImagePickerControllerSourceType) {
         if source == .photoLibrary || source == .camera {
