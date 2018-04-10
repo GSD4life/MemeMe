@@ -32,7 +32,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
         
-        // Configure text field attributes to top and bottom textfields
+        // Configure text field attributes
         func configure(_ textField: UITextField, with defaultText: String) {
             if defaultText == "Top" || defaultText == "Bottom"  {
                 topTextField.text = "Top"
