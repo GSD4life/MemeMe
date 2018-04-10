@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeVersion1
 //
 //  Created by Shane Sealy on 3/10/18.
