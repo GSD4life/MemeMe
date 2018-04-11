@@ -24,34 +24,39 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Text attributes
-        
-        let memeTextAttributes: [String: Any] = [
+        // Configuring textfield attributes
+        configure(topTextField, with: "Top")
+        configure(bottomTextField, with: "Bottom")
+    }
+    
+    let memeTextAttributes: [String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
-        
-        // Configure text field attributes
-        func configure(_ textField: UITextField, with defaultText: String) {
-            if defaultText == "Top" || defaultText == "Bottom"  {
-                topTextField.text = "Top"
-                bottomTextField.text = "Bottom"
-                textField.delegate = self
-                textField.defaultTextAttributes = memeTextAttributes
-                textField.textAlignment = .center
-            }
+    
+    // Configure text field attributes
+    func configure(_ textField: UITextField, with defaultText: String) {
+        if defaultText == "Top" || defaultText == "Bottom"  {
+            topTextField.text = "Top"
+            bottomTextField.text = "Bottom"
+            textField.delegate = self
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.textAlignment = .center
         }
-        
-        configure(topTextField, with: "Top")
-        configure(bottomTextField, with: "Bottom")
     }
     
     func pickAnImage(from source: UIImagePickerControllerSourceType) {
         if source == .photoLibrary || source == .camera {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
             present(imagePicker, animated: true, completion: nil)
+        } else {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated:true, completion: nil)
         }
     }
     
