@@ -93,6 +93,7 @@
                         <viewLayoutGuide key="safeArea" id="4h7-xG-WcX"/>
                     </view>
                     <connections>
+                        <outlet property="albumButton" destination="3Ob-9u-65z" id="UFM-Ly-foa"/>
                         <outlet property="bottomTextField" destination="ccN-yp-cSi" id="1y5-K0-c77"/>
                         <outlet property="cameraButton" destination="wic-AG-iry" id="IgV-RI-cht"/>
                         <outlet property="cancelButton" destination="xKT-am-uQR" id="SjM-17-Lh9"/>
