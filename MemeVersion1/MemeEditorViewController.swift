@@ -78,7 +78,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePickerView.image = nil
     }
     
-    // Mark - Text attribute dictionary array creation
+    // Mark - Text attribute dictionary creation
     
     let memeTextAttributes: [String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
