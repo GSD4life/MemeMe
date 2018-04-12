@@ -28,9 +28,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configuring textfield attributes
-        configure(topTextField, with: "Top")
-        configure(bottomTextField, with: "Bottom")
+        configureTextFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +47,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
     }
     
-    // Mark: Button Actions
+    // Mark: Button actions
     
     @IBAction func pickAnImageFromCamera(_ sender:Any) {
         pickAnImage(from: .camera)
@@ -78,17 +76,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePickerView.image = nil
     }
     
-    // Mark - Text attribute dictionary creation
-    
-    let memeTextAttributes: [String: Any] = [
-        NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
-        NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-        NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
-    
     // Mark: Helper functions
     
     func configure(_ textField: UITextField, with defaultText: String) {
+        let memeTextAttributes: [String: Any] = [
+            NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+            NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedStringKey.strokeWidth.rawValue: -4.0 ]
+        
         if defaultText == "Top" || defaultText == "Bottom"  {
             topTextField.text = "Top"
             bottomTextField.text = "Bottom"
@@ -98,18 +94,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
     }
     
+    func configureTextFields() {
+        configure(topTextField, with: "Top")
+        configure(bottomTextField, with: "Bottom")
+    }
+    
     func pickAnImage(from source: UIImagePickerControllerSourceType) {
-        if source == .photoLibrary || source == .camera {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
+            imagePicker.sourceType = source
             present(imagePicker, animated: true, completion: nil)
-        } else {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            present(imagePicker, animated:true, completion: nil)
-        }
     }
     
     func imagePickerController(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
@@ -173,13 +167,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func hideNaviAndToolbar(hidebars: Bool) {
-        if hidebars == true {
-            self.navigationBar.isHidden = true
-            self.toolBar.isHidden = true
-        } else {
-            self.navigationBar.isHidden = false
-            self.toolBar.isHidden = false
-        }
+            self.navigationBar.isHidden = hidebars
+            self.toolBar.isHidden = hidebars
     }
     
     func generateMemedImage() -> UIImage {
