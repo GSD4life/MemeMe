@@ -8,12 +8,10 @@
 
 import UIKit
 
-extension MemeEditorViewController {
-
     struct Meme {
         let topTextField: String!
         let bottomTextField: String!
         let originalImage: UIImage!
         let memedImage: UIImage!
     }
-}
+
