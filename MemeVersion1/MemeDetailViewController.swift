@@ -10,18 +10,22 @@ import UIKit
 
 class MemeDetailViewController: UIViewController {
     
+    // Mark: Property
+    
     var memeItem: Meme!
     
+    // Mark: IBOutlet
+    
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
-
+    
+    // Mark: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.label.text = self.memeItem.topTextField
         self.tabBarController?.tabBar.isHidden = true
         self.imageView!.image = memeItem.memedImage
     }
@@ -30,21 +34,5 @@ class MemeDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

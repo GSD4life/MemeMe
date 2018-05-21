@@ -64,8 +64,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) -> Void in
             if completed == true {
                 self.save()
+                self.popToSentMemes()
             } else {
                 self.dismiss(animated: true, completion: nil)
+                self.popToSentMemes()
             }
         }
     }
@@ -74,9 +76,17 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.text = "Top"
         bottomTextField.text = "Bottom"
         imagePickerView.image = nil
+        popToSentMemes()
+        
     }
     
     // Mark: Helper functions
+    
+    @objc func popToSentMemes() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
     
     func configure(_ textField: UITextField, with defaultText: String) {
         let memeTextAttributes: [String: Any] = [

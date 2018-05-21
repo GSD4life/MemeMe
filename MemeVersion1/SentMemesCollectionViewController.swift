@@ -10,10 +10,24 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController {
     
+    // Mark: Property
+    
     var memes: [Meme]!
+    
+    // Mark: IBOutlet
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    // Mark: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let space:CGFloat = 2.0
+        let dimension = (view.frame.size.width - (2 * space)) / 2.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,25 +37,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
         
-        // Mark: Helper function
+    // Mark: Helper function
         
-      /*  @IBAction func moveToMemeEditor() {
+    @IBAction func moveToMemeEditor() {
             let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
             navigationController?.pushViewController(editorVC, animated: true)
-        } */
-
-      
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
-    */
 
-    // MARK: UICollectionViewDataSource
+    // Mark: UICollectionView datasource protocols
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -54,8 +57,9 @@ class SentMemesCollectionViewController: UICollectionViewController {
     cell.memeMeImageView.image = memeItem.memedImage
     
     return cell
-    
     }
+    
+    // Mark: UICollectionView delegate protocol
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         

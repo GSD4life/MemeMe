@@ -10,7 +10,7 @@ import UIKit
 
 class SentMemesTableViewController: UITableViewController {
     
-    // Mark - Meme Struct property
+    // Mark: Property
     
     var memes: [Meme]!
     
@@ -32,14 +32,13 @@ class SentMemesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // Mark: Helper function
+    // Mark: Button action
     
     @IBAction func moveToMemeEditor() {
       let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
       navigationController?.pushViewController(editorVC, animated: true)
     }
     
-
     // MARK: - TableView datasource protocols
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,15 +63,5 @@ class SentMemesTableViewController: UITableViewController {
         detailController.memeItem = self.memes[indexPath.row]
         navigationController?.pushViewController(detailController, animated: true)
     }
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
