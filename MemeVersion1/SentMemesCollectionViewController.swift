@@ -47,7 +47,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
     // Mark: UICollectionView datasource protocols
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return memes.count
     }
 
