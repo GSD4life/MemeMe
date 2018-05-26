@@ -40,11 +40,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             shareButton.isEnabled = true
         }
         subscribeToKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // Mark: Button actions
