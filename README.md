@@ -12,7 +12,7 @@ The MemeMe app is a meme generating app that allows a user to add text to a pict
 
 1. IOS 11.3+
 2. Xcode 8.0+
-3. IPhone or IPad
+3. iPhone or iPad
 
 #### Installation: 
 
