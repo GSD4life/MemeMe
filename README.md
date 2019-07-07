@@ -16,7 +16,7 @@ The MemeMe app is a meme generating app that allows a user to add text to a pict
 
 #### Installation: 
 
-1. git clone: https://github.com/GSD4life/VirtualTourist.git
+1. git clone: https://github.com/GSD4life/MemeMe.git
 2. cd YourProjectName - the name of your project
 3. Pod install
 4. Open YourProjectName.xcworkspace
